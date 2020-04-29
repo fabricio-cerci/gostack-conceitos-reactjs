@@ -13,7 +13,16 @@ function App() {
   }, []);
 
   async function handleAddRepository() {
-    // TODO
+    const response = await api.post('repositories', 
+    {
+      title: `Novo Repositório ${Date.now()}`,
+      url: 'https://github.com/fabricio-cerci',
+      techs: ['React JS', 'React Native']
+    });
+
+    const repository = response.data;
+
+    setRepository([...repositories, repository]);
   }
 
   async function handleRemoveRepository(id) {
